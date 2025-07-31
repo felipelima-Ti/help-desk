@@ -1,10 +1,25 @@
-# Getting Started with Create React App
+Um sistema de help Desk de chamados para grande empresas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ perfeito para controle de demandas, 
+ 
+ resoluçao rapida de problemas,
+ 
+ fornecendo suporte técnico e atendimento ao cliente
 
-## Available Scripts
+<br><br>
+acesse agora 👉: https://project-chamados.netlify.app/
+<br><br>
+tecnologias usadas:
+<br>
+JavaScript|React.js e css
 
-In the project directory, you can run:
+Firebase
+
+hospedagem|netlify
+
+<br><br><br><br><br><br><br><br>
+
+compilando o projeto >
 
 ### `npm start`
 
