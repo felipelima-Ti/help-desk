@@ -1,0 +1,101 @@
+.container{
+    display:flex;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 0.8em;
+    align-items: center;
+    margin-bottom: 1em;
+    
+}
+.label-avatar{
+   
+   
+    width:160px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.label-avatar input{
+    display:none ;
+}
+.label-avatar span{
+    z-index:99;
+    position:absolute ;
+    opacity: 0.7;
+    transition: all 0.5s;
+}
+.label-avatar span:hover{
+    opacity: 1;
+    transform:scale(1.4) ;
+}
+.form-profile img{
+    margin-bottom: 1em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.form-profile label{
+    margin-bottom:0.5em;
+    font-size:1.4em;
+    
+}
+.content {
+    transition: margin-left 0.3s ease;
+    margin-left: 100px;
+    padding: 20px;
+  }
+  
+  .content.collapsed {
+    margin-left: 0;
+  }
+  .btn-delete-avatar{
+    border: 1px solid black;
+    margin-top: 20px;
+    border-radius:5px ;
+    background-color: rgb(218, 59, 59);
+    color: rgb(0, 0, 0);
+    padding-top: 5px;
+    padding-bottom:5px ; 
+  }
+  .btn-delete-avatar:hover{
+    color: white;
+  }
+
+  .delete-account-btn {
+    border-radius: 5px;
+    background-color: white; 
+    color: black;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding-top: 14px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    
+}
+
+.delete-account-btn:hover {
+    background-color: red;
+}
+.left-align {
+    display: block;
+    text-align: left;
+    margin-left: 0; 
+    padding-left: 0; 
+    color: #0a29b1;
+    text-decoration: none; 
+}
+
+.left-align:hover {
+    text-decoration: underline; 
+}
+.btn-delete-avatar Fitrash2:hover{
+    color: white;
+  }
+
+  

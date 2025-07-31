@@ -1,0 +1,180 @@
+
+.container-center{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://www.agilesolve.com.br/wp-content/uploads/2025/01/empresa-2.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 0 12px;
+
+}
+.center::before {
+    content: '';
+    position: absolute;
+    background-image: url('https://www.agilesolve.com.br/wp-content/uploads/2025/01/empresa-2.jpg');
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+   
+    
+}
+
+.conten {
+    position: relative;
+    
+  
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+}
+.login{
+    background-color: #eaeaec;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.login-area{
+background-color: #02336b;
+width: 100%;
+display: flex;
+justify-content: center;
+}
+.login-area img{
+    width: 170px;
+    height: 130px;
+    padding: 20px;
+    
+}
+form{
+    margin-top: 1.5rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+form h1{
+    text-align: center;
+    margin-bottom: 1rem;
+    color:#0d0f31;
+}
+.login input{
+    margin-bottom: 1rem;
+    height: 35px;
+    border-radius: 4px;
+    border: 0;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #fff;
+}
+form button{
+    height: 35px;
+    border:0;
+    border-radius: 4px;
+    background-color:#02336b ;
+    color:#fff;
+    font-size: 1.3rem;
+    
+}
+form button:hover{
+background-color:#5166c4 ;
+}
+.login a{
+    margin: 1.5rem 0;
+    color:#000;
+    cursor: pointer;
+}
+.titulo{
+    margin-bottom: 10px;
+    color:white;
+}
+button{
+    margin-bottom: 10px;
+}
+input{
+    margin-top: 25px;
+}
+
+/* Reset básico */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+/* Estilo para a página centralizada */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+
+/* Caixa de conteúdo */
+.conten {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+}
+
+
+/* Título */
+.title{
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.title2{
+    
+    font-size: 17px;
+    color: #333;
+}
+
+/* Botão estilizado */
+.button {
+    display: inline-block;
+    background: #4facfe;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background: #0077ff;
+    transform: scale(1.05);
+}
+@media screen and (max-width:600px){
+    .conten{
+        width: 350px; 
+        text-align: center;
+        align-items: center;
+    }
+}
+@media (max-width:320px){
+.conten{
+    width: 310px;
+    text-align: center;
+    align-items: center;
+}
+}

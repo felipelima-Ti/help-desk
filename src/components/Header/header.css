@@ -1,0 +1,111 @@
+.sidebar{
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    background-color:#181c2e ;
+    position: fixed;
+    height: 100%;
+    overflow:auto ; 
+   
+}
+.sidebar div{
+background: url('D:\sistema\sistema\src\assets\Futuristic-Red-Blue-Background-Design-Graphics-30683310-1.jpg');
+background-color: #181c2e;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+height: 150px;
+}
+.sidebar div{
+    padding-top: 30px;
+}
+.sidebar div img{
+width: 90px;
+height: 90px;
+display: block;
+margin: auto;
+border-radius:50%;
+object-fit: cover;
+filter: drop-shadow(2px 3px 6px #121212);
+-webkit-filter:drop-shadow(2px 3px 6px #121212) ;
+}
+.sidebar a{
+    display: block;
+    padding: 16px;
+    display: flex;
+    text-decoration:none ;
+    color: rgba(255,255,255,0.7);
+    flex-direction: row;
+    align-items: center;
+    transition: ease-in-out 0.4s;
+}
+.sidebar a svg{
+    margin-right: 0.5rem;
+}
+.sidebar a:hover{
+    background-color: #121212;
+    color: #fff;
+}
+.content{
+    margin-left:200px;
+    padding: 1px 16px;
+}
+@media screnn and (max-width: 700px){
+
+    .sidebar{
+        width: 50%;
+        height: auto;
+        position: fixed;
+    }
+    div.content{
+        margin-left:0;
+    }
+    .sidebar a{
+        float: left;
+    }
+    .sidebar div{
+        display: none;
+    }
+    .sidebar a svg{
+        display: none;
+    }
+}
+
+@media screen and (max-width:400px){
+    .sidebar a{
+        width: 150px;
+       text-align:center ; 
+       float: none;
+
+    }
+    .sidebar a svg{
+        display:none;
+    }
+}
+
+.sidebar {
+  width: 180px;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  bottom: 0;
+  transition: left 0.3s ease;
+
+}
+
+.sidebar.open {
+  left: 0;
+  
+}
+
+.menu-toggle {
+    background-color: #121212;
+    color: #181c2e;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}

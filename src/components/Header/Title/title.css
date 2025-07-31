@@ -1,0 +1,52 @@
+.title{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    margin:1em 0;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    padding: 0.8em;
+}
+.title span{
+    margin-left: 0.8em;
+    font-size: 1.5em;
+}
+.form-profile input, textarea,select{
+    margin-bottom: 1em;
+    padding: 0.7em;
+    border: 0;
+    border-radius: 5px;
+    max-width: 600px;
+}
+.form- input:disabled{
+    cursor:not-allowed;
+}
+.form-profile button{
+    max-width: 600px;
+}
+
+.logout-btn{
+    margin-left: 10px;
+    padding: 8px 20px;
+    border: 1px solid #121212;
+    background-color:transparent;
+    border-radius: 5px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.logout-btn2{
+    background-color: rgb(218, 59, 59);
+   margin-top: 15px;
+    padding: 8px 20px;
+    border: 1px solid #121212;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold; 
+}
+
+.logout-btn2:hover{
+    background-color: rgb(240, 54, 54);
+    color: white;
+}
