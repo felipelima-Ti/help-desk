@@ -25,5 +25,3 @@ yarn-error.log*
 firebaseConnection.js
 firebase-config.ts
 firebase.js
-.env
-/public
