@@ -26,3 +26,4 @@ firebaseConnection.js
 firebase-config.ts
 firebase.js
 .env
+/public
