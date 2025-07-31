@@ -3,7 +3,7 @@ import Header from '../..//components/Header'
 import Title from '../../components/Header/Title'
 import { auth } from '../../services/firebaseConection';
 import { deleteUser } from "firebase/auth";
-import {FiDelete, FiSettings, FiTrash2, FiUpload} from 'react-icons/fi'
+import {FiSettings, FiTrash2, FiUpload} from 'react-icons/fi'
 import avatar from '../../assets/avatar.png';
 import {AuthContext} from '../../contexts/auth'
 
@@ -11,15 +11,11 @@ import { db, storage } from '../../services/firebaseConection'
 import { doc, updateDoc,deleteDoc} from 'firebase/firestore'
 import { ref, uploadBytes, getDownloadURL,deleteObject, } from 'firebase/storage'
 
-import ForgotPassword from '../SignIn/ForgotPassword';
 
 import {toast} from  'react-toastify'
 
 import './profile.css';
 import { Link } from 'react-router-dom'; 
-
-// Dentro do seu JSX (por exemplo, logo após o formulário de perfil):
-
 
 export default function Profile(){
     const [menuOpen, setMenuOpen] = useState(true);
@@ -33,7 +29,7 @@ export default function Profile(){
     const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl)
     const[imageAvatar,setImageAvatar] =  useState(null);
     const [nome,setNome] = useState(user && user.nome);
-    const [email,setEmail] = useState(user && user.email);
+    const [email] = useState(user && user.email);
     const[imageUrl, setImageUrl] = useState('');
     
 
@@ -112,12 +108,12 @@ export default function Profile(){
         if (user.avatarUrl && window.confirm('Tem certeza de que deseja excluir sua foto?')) {
             try {
                 // Tenta remover a imagem do Firebase Storage usando o caminho armazenado em avatarUrl
-                const avatarRef = ref(storage, user.avatarUrl); // Usar o caminho completo da URL da imagem
+                const avatarRef = ref(storage, user.avatarUrl); 
     
-                // Verifica se o arquivo existe e o deleta
+                
                 await deleteObject(avatarRef);
     
-                // Atualizar no Firestore para remover o avatarUrl
+                
                 const docRef = doc(db, "users", user.uid);
                 await updateDoc(docRef, {
                     avatarUrl: null,
@@ -166,7 +162,7 @@ export default function Profile(){
         });
 
     } else if (imageUrl !== '') {
-            // Atualizar com a URL da imagem fornecida
+            
             const docRef = doc(db, "users", user.uid);
             await updateDoc(docRef, {
                 avatarUrl: imageUrl,

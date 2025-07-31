@@ -5,8 +5,8 @@ import './new.css';
 import { FiPlusCircle } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/auth';
 import { db } from '../../services/firebaseConection';
-import { collection, getDocs, getDoc, doc, addDoc, updateDoc, deleteDoc,Timestamp } from 'firebase/firestore';
-import avatarImg from '../../assets/avatar.png'; // Imagem padrão
+import { collection, getDocs, getDoc, doc, addDoc, updateDoc, deleteDoc, Timestamp } from 'firebase/firestore';
+import avatarImg from '../../assets/avatar.png';
 
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -18,7 +18,7 @@ export default function New() {
   const { id } = useParams();
   const [dueDate, setDueDate] = useState('');
   const navigate = useNavigate();
-  
+
   const [customers, setCustomers] = useState([]);
   const [loadCustomer, setLoadCustomer] = useState(true);
   const [customerSelected, setCustomerSelected] = useState(0);
@@ -104,8 +104,8 @@ export default function New() {
 
   async function handleRegister(e) {
     e.preventDefault();
-  
-    // Verifica se estamos editando um chamado existente
+
+    // Verifica se estamos editando um chamado
     if (idCustomer) {
       const docRef = doc(db, "chamados", id);
       try {
@@ -120,12 +120,12 @@ export default function New() {
           nome: user.nome,
           avatarUrl: user.avatarUrl || avatarImg,
         };
-  
+
         // Verifica se a data de vencimento foi preenchida antes de atualizar
         if (dueDate) {
           updateData.dueDate = Timestamp.fromDate(new Date(dueDate));
         }
-  
+
         await updateDoc(docRef, updateData);
         toast.info("Chamado editado com sucesso!");
         setComplemento('');
@@ -136,8 +136,8 @@ export default function New() {
       }
       return;
     }
-  
-    // Monta o objeto de criação antes do try-catch
+
+    // Monta o objeto de criação 
     const newData = {
       created: new Date(),
       cliente: customers[customerSelected].nomeFantasia,
@@ -149,12 +149,12 @@ export default function New() {
       nome: user.nome,
       avatarUrl: user.avatarUrl || avatarImg,
     };
-  
+
     // Verifica se a data de vencimento foi preenchida antes de criar
     if (dueDate) {
       newData.dueDate = Timestamp.fromDate(new Date(dueDate));
     }
-  
+
     try {
       await addDoc(collection(db, "chamados"), newData);
       toast.success("Chamado registrado com sucesso!");
@@ -188,7 +188,7 @@ export default function New() {
                 ))}
               </select>
             )}
-              {user.nome}
+            {user.nome}
             <label>Assunto</label>
             <select value={assunto} onChange={handleChangeSelect}>
               <option value="Suporte">Suporte</option>
@@ -233,19 +233,19 @@ export default function New() {
               onChange={(e) => setComplemento(e.target.value)}
             />
             <span>data de vencimento(opcional)</span>
-             <input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-      />
+            <input
+              type="date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            />
 
             <button type="submit">Registrar</button>
 
             {status === 'Atendido' && (
               <button className='excluir' type="button" onClick={handleDelete}>Excluir Chamado</button>
             )}
-           
-            
+
+
           </form>
         </div>
       </div>
@@ -264,7 +264,7 @@ export default function New() {
     } catch (error) {
       toast.error("Erro ao excluir chamado.");
       console.log(error);
-      
+
     }
   }
 }
