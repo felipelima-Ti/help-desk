@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Ignorar a conexão com o Firebase
+firebaseConnection.js
+firebase-config.ts
+firebase.js
+.env
