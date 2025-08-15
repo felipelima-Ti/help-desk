@@ -188,7 +188,7 @@ export default function New() {
                 ))}
               </select>
             )}
-            {user.nome}
+            
             <label>Assunto</label>
             <select value={assunto} onChange={handleChangeSelect}>
               <option value="Suporte">Suporte</option>
@@ -244,8 +244,7 @@ export default function New() {
             {status === 'Atendido' && (
               <button className='excluir' type="button" onClick={handleDelete}>Excluir Chamado</button>
             )}
-
-
+{user.nome}
           </form>
         </div>
       </div>
