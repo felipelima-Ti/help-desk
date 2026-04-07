@@ -6,16 +6,14 @@ import { deleteUser } from "firebase/auth";
 import {FiSettings, FiTrash2, FiUpload} from 'react-icons/fi'
 import avatar from '../../assets/avatar.png';
 import {AuthContext} from '../../contexts/auth'
-
-import { db, storage } from '../../services/firebaseConection'
+import { db} from '../../services/firebaseConection'
 import { doc, updateDoc,deleteDoc} from 'firebase/firestore'
-import { ref, uploadBytes, getDownloadURL,deleteObject, } from 'firebase/storage'
-
 
 import {toast} from  'react-toastify'
 
 import './profile.css';
 import { Link } from 'react-router-dom'; 
+import { uploadImage } from "../../services/upload1"; 
 
 export default function Profile(){
     const [menuOpen, setMenuOpen] = useState(true);
@@ -25,12 +23,12 @@ export default function Profile(){
     };
 
     const { user, storageUser, setUser, logout} = useContext(AuthContext);
-
+    const [imageUrl, setImageUrl] = useState('');
     const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl)
     const[imageAvatar,setImageAvatar] =  useState(null);
     const [nome,setNome] = useState(user && user.nome);
     const [email] = useState(user && user.email);
-    const[imageUrl, setImageUrl] = useState('');
+    
     
 
     function handleFile(e){
@@ -69,124 +67,98 @@ export default function Profile(){
         }
     }
 
-    async function handleUpload(){
-    const currentUid = user.uid;
+   async function handleUpload() {
+  try {
+    if (!imageAvatar) return;
 
-    const uploadRef = ref(storage,`images/${currentUid}/${imageAvatar.name}` )
+    // 🔥 Upload Cloudinary
+    const urlFoto = await uploadImage(imageAvatar);
 
-    const uploadTask = uploadBytes(uploadRef, imageAvatar)
-    .then((snapshot) =>{
-     
-        getDownloadURL(snapshot.ref).then(async (dowloadURL)=>{
-        let urlFoto = dowloadURL;
+    // 🔥 Salvar no Firestore
+    const docRef = doc(db, "users", user.uid);
 
-        
-        const docRef = doc(db, "users", user.uid)
-        await updateDoc(docRef, {
-        avatarUrl: urlFoto,
+    await updateDoc(docRef, {
+      avatarUrl: urlFoto,
+      nome: nome,
+    });
+
+    let data = {
+      ...user,
+      nome: nome,
+      avatarUrl: urlFoto,
+    };
+
+    setUser(data);
+    storageUser(data);
+    setImageUrl(urlFoto);
+
+    toast.success("Atualizado com sucesso!");
+  } catch (error) {
+    console.error("Erro no upload:", error);
+    toast.error("Erro ao enviar imagem");
+  }
+}
+
+   async function handleDeletePhoto() {
+  if (user.avatarUrl && window.confirm('Tem certeza que deseja remover sua foto?')) {
+    try {
+      const docRef = doc(db, "users", user.uid);
+
+      await updateDoc(docRef, {
+        avatarUrl: null,
+      });
+
+      let data = {
+        ...user,
+        avatarUrl: null,
+      };
+
+      setUser(data);
+      storageUser(data);
+      setAvatarUrl(null);
+      setImageAvatar(null);
+      setImageUrl('');
+
+      toast.success('Foto removida com sucesso!');
+    } catch (error) {
+      console.error(error);
+      toast.error("Erro ao remover foto");
+    }
+  }
+}
+    async function handleSubmit(e) {
+  e.preventDefault();
+
+  try {
+    // 🔥 Se tem imagem → sobe pro Cloudinary
+    if (imageAvatar) {
+      await handleUpload();
+      return;
+    }
+
+    // 🔥 Só atualizar nome
+    if (nome !== '') {
+      const docRef = doc(db, "users", user.uid);
+
+      await updateDoc(docRef, {
         nome: nome,
-        
-        })
-        .then(() =>{
-            let data = {
-                ...user,
-               
-                nome: nome,
-               
-                avatarUrl: urlFoto,
-            }
-            setUser(data);
-           
-            storageUser(data);
-            toast.success("Atualizado com sucesso!")
-            })
-         })
-      })
+      });
+
+      let data = {
+        ...user,
+        nome: nome,
+      };
+
+      setUser(data);
+      storageUser(data);
+
+      toast.success("Nome atualizado!");
     }
-
-    async function handleDeletePhoto() {
-        if (user.avatarUrl && window.confirm('Tem certeza de que deseja excluir sua foto?')) {
-            try {
-                // Tenta remover a imagem do Firebase Storage usando o caminho armazenado em avatarUrl
-                const avatarRef = ref(storage, user.avatarUrl); 
-    
-                
-                await deleteObject(avatarRef);
-    
-                
-                const docRef = doc(db, "users", user.uid);
-                await updateDoc(docRef, {
-                    avatarUrl: null,
-                });
-    
-                // Atualiza o estado do usuário localmente
-                let data = {
-                    ...user,
-                    avatarUrl: null,
-                };
-                setUser(data);
-                storageUser(data);
-                setAvatarUrl(null);
-                setImageAvatar(null);
-                setImageUrl('');
-                toast.success('Foto excluída com sucesso!');
-            } catch (error) {
-                console.error("Erro ao deletar a imagem do storage:", error);
-                toast.error("Erro ao excluir a foto. Tente novamente.");
-            }
-        } else {
-            toast.info("Cancelado com sucesso");
-        }
-    }
-
-
-
-     async function handleSubmit(e){
-      e.preventDefault();
-        if(imageAvatar ===null && nome !== '' ){
-        //atualizar nome do user
-        const docRef  = doc(db,"users",user.uid)
-        await updateDoc(docRef,{
-            nome: nome,
-        })
-        .then(() => {
-            let data = {
-                ...user,
-                nome: nome,
-                  
-            }
-          
-            setUser(data);
-            storageUser(data);
-            toast.success("Atualizado com sucesso!")
-        });
-
-    } else if (imageUrl !== '') {
-            
-            const docRef = doc(db, "users", user.uid);
-            await updateDoc(docRef, {
-                avatarUrl: imageUrl,
-                nome: nome,
-            })
-                .then(() => {
-                    let data = {
-                        ...user,
-                        nome: nome,
-                        avatarUrl: imageUrl,
-                    };
-                    setUser(data);
-                    storageUser(data);
-                    toast.success("Atualizado com sucesso!");
-                });
-
-               
-        
-
-        }else if(nome !== '' && imageAvatar !== null){
-            
-            handleUpload()
-        }
-    }
+  } catch (error) {
+    console.error(error);
+    toast.error("Erro ao atualizar perfil");
+  }
+}
     return(
         <div>
             <Header menuOpen={menuOpen} toggleMenu={toggleMenu}/>

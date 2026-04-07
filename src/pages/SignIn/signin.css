@@ -26,8 +26,6 @@
 
 .conten {
     position: relative;
-    
-  
     text-align: center;
     padding: 2rem;
     border-radius: 12px;
@@ -123,10 +121,10 @@ body, html {
 /* Caixa de conteúdo */
 .conten {
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(240, 239, 239, 0.9);
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
     max-width: 800px;
     width: 100%;
 }
@@ -135,19 +133,28 @@ body, html {
 /* Título */
 .title{
     font-size: 24px;
-    color: #333;
+    color: #025ca5;
     margin-bottom: 20px;
     font-weight: bold;
+    text-align: center;
+    justify-content: center;
 }
 
 .title2{
-    
+    padding-top: 20px;
     font-size: 17px;
-    color: #333;
+    background-color: #ffffff;
+    color: #025396;
+    margin-bottom: 20px;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 20px;
 }
 
 /* Botão estilizado */
 .button {
+    
     display: inline-block;
     background: #4facfe;
     color: #fff;
@@ -176,5 +183,281 @@ body, html {
     width: 310px;
     text-align: center;
     align-items: center;
+}   
 }
+.icons-container {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 40px; /* espaço entre os ícones */
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column; /* ícone em cima, texto embaixo */
+  align-items: center; /* centraliza o texto */
+  text-align: center;
+}
+.text-icon{
+    
+    font-size: 18px;
+    color: #033c86;
+    font-weight: bold;
+}
+.titlea{
+    font-size: 18px;
+    color: #008cff;
+    font-weight: bold; 
+}
+@media (max-width: 768px) {
+  .icons-container {
+    flex-wrap: wrap; /* permite quebrar linha */
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .icon-item {
+    width: 45%; /* duas colunas */
+  }
+
+  .text-icon {
+    font-size: 16px;
+  }
+
+  .titlea {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .icons-container {
+    flex-direction: column; /* uma coluna */
+    gap: 20px;
+  }
+
+  .icon-item {
+    width: 100%;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+}
+@media (max-width: 360px) {
+    body{
+       padding-top: 20px; 
+    }
+    .title{
+        padding-top: 100px;
+    }
+  .icons-container {
+    flex-direction: column; /* um embaixo do outro */
+    
+    margin-top: 25px;
+  }
+.button{
+    margin-top: 50px;
+    
+}
+  .icon-item {
+    width: 100%;
+  }
+
+  .icon-item svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+}
+@media (max-width: 375px) {
+    body{
+       padding-top: 60px;
+       height: 900px;
+    }
+  .icons-container {
+    flex-direction: column; /* um embaixo do outro */
+    
+    margin-top: 25px;
+  }
+  .icon-item {
+    width: 90%;
+  }
+
+  .icon-item svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+  .conten{
+    width: 400px;
+    padding: 0;
+  }
+  .center{
+    margin-top: 10px;
+  
+  
+  }
+}
+@media (max-width: 360px) {
+    body{
+       padding-top: 100px;
+       height: 900px;
+    }
+  .icons-container {
+    flex-direction: column; /* um embaixo do outro */
+    
+    margin-top: 25px;
+  }
+  .icon-item {
+    width: 90%;
+  }
+
+  .icon-item svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+  .conten{
+    width: 400px;
+    padding: 0;
+  }
+  .center{
+    margin-top: 10px;
+  
+  
+  }
+}
+@media (max-width: 412px) {
+    body{
+      padding: 0;
+      margin: 0;
+    }
+  .icons-container {
+    flex-direction: column; /* um embaixo do outro */
+    
+    margin-top: 25px;
+  }
+  .icon-item {
+    width: 90%;
+  }
+
+  .icon-item svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+  .conten{
+    width: 420px;
+    padding: 0;
+    margin: 0;
+  }
+  .center{
+    margin-top: 10px;
+    height: 960px;
+  }
+}
+@media (max-width: 414px) {
+    body{
+      padding: 0;
+      margin: 0;
+    }
+  .icons-container {
+    flex-direction: column; /* um embaixo do outro */
+    
+    margin-top: 25px;
+  }
+  .icon-item {
+    width: 90%;
+  }
+
+  .icon-item svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+  .conten{
+    width: 420px;
+    padding: 0;
+    margin: 0;
+  }
+  .center{
+    margin-top: 10px;
+    
+  }
+}
+@media (max-width: 390px) {
+    body{
+      padding: 0;
+      margin: 0;
+    }
+  .icons-container {
+    flex-direction: column; /* um embaixo do outro */
+    
+    margin-top: 25px;
+  }
+  .icon-item {
+    width: 90%;
+  }
+
+  .icon-item svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .text-icon {
+    font-size: 15px;
+  }
+
+  .titlea {
+    font-size: 15px;
+  }
+  .conten{
+    width: 420px;
+    padding: 0;
+    margin: 0;
+  }
+  .center{
+    margin-top: 10px;
+    height: 800px;
+  }
 }

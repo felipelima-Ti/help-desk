@@ -147,7 +147,7 @@ export default function New() {
       status: status,
       userId: user.uid,
       nome: user.nome,
-      avatarUrl: user.avatarUrl || avatarImg,
+      avatarUrl: user.avatarUrl || null,
     };
 
     // Verifica se a data de vencimento foi preenchida antes de criar

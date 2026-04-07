@@ -77,7 +77,7 @@ export default function Dashboard() {
           assunto: data.assunto,
           cliente: data.cliente,
           clienteId: data.clienteId,
-          avatarUrl: data.avatarUrl,
+          avatarUrl: data.avatarUrl || null,
           created: data.created,
           createdFormat: format(data.created.toDate(), 'dd/MM/yyyy'),
           status: data.status,
@@ -357,12 +357,12 @@ export default function Dashboard() {
               {chamados.map((item, index) => (
                 <tr key={index}>
                   <td data-label="Cliente">
-                    <img
-                      src={item.avatarUrl ? item.avatarUrl : avatarImg}
-                      alt="Avatar"
-                      width={30}
-                      height={30}
-                      style={{ borderRadius: '50%', marginRight: '8px' }}
+                   <img
+                    src={item.avatarUrl ? item.avatarUrl : avatarImg}
+                    alt="Avatar"
+                    width={30}
+                    height={30}
+                    style={{ borderRadius: '50%', marginRight: '8px', objectFit: 'cover' }}
                     />
                     {item.cliente}
                   </td>
